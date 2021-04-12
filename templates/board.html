@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="static/app.css">
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <title>Play Boggle!</title>
+</head>
+
+<body>
+    <h1>Boggle!</h1>
+
+    <table class="center">
+        <tbody>
+            {% for row in board %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/checkword" method="POST" id="submitword">
+        <input type="text" name="word" id="">
+        <button class="btn btn-success">Submit Word</button>
+    </form>
+    <div class="hidden"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>
