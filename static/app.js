@@ -7,8 +7,22 @@ async function checkUserWord(e) {
     return;
   }
   const res = await axios.get("/checkword", { params: { word: word } });
-  if (res.data.response === "ok") {
-    $("#notify").show().addClass("alert alert-success").text("Correct!");
+  console.log(res);
+  if (res.data.result === "ok") {
+    $("#notify")
+      .show()
+      .addClass("alert alert-success")
+      .html(`<h2>Correct!<h2>`);
+  } else if (res.data.result === "not-on-board") {
+    $("#notify")
+      .show()
+      .addClass("alert alert-warning")
+      .html(`<h2>That is a word, but it's not on board!<h2>`);
+  } else {
+    $("#notify")
+      .show()
+      .addClass("alert alert-danger")
+      .html(`<h2>That's not a word :(<h2>`);
   }
   $("#submitword input").val("");
 }
