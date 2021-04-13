@@ -10,3 +10,8 @@ form {
 .hidden {
   display: none;
 }
+.letter {
+  letter-spacing: 2rem;
+  /* border: 0.1rem dotted grey; */
+  text-align: center;
+}

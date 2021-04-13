@@ -15,18 +15,19 @@
 
 <body>
     <h1>Boggle!</h1>
-
+    <br>
     <table class="center">
         <tbody>
             {% for row in board %}
             <tr>
-                {% for cell in row %}
-                <td>{{ cell }}</td>
+                {% for letter in row %}
+                <td class="letter">{{letter}}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <br>
 
     <form action="/checkword" method="POST" id="submitword">
         <input type="text" name="word" id="">
