@@ -15,7 +15,14 @@
 
 <body>
     <h1>Boggle!</h1>
-    <br>
+    <div class="row border border-info m-4">
+        <div class="col">Timer: <span id="timer">60</span></div>
+        <div class="col">Points: <span id="points">0</span></div>
+        <div class="col">Best Score: {{ session["highscore"] }}</div>
+        <div class="col">Times Played: {{ session["games_played"] }}</div>
+    </div>
+    </div>
+    </header>
     <table class="center">
         <tbody>
             {% for row in board %}
@@ -29,12 +36,15 @@
     </table>
     <br>
 
-    <form action="/checkword" method="POST" id="submitword">
+    <form id="submitword">
         <input type="text" name="word" id="">
         <button class="btn btn-success">Submit Word</button>
     </form>
     <br>
     <div id="notify" class="container hidden"></div>
+    <div class="text-center">
+        <button id="restart" class=" btn btn-info hidden">Restart Game</button>
+    </div>
     <script src="/static/app.js"></script>
 </body>
 

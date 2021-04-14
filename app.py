@@ -1,4 +1,12 @@
-from flask import Flask, request, render_template, redirect, flash, session, jsonify
+from flask import (
+    Flask,
+    request,
+    render_template,
+    redirect,
+    flash,
+    session,
+    jsonify,
+)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from boggle import Boggle
@@ -20,10 +28,21 @@ def get_boggle_board():
     return render_template("board.html", board=board)
 
 
-@app.route("/checkword", methods=["GET", "POST"])
+@app.route("/checkword")
 def check_valid_word():
-
-    user_word = request.args["word"]
+    """Check if word is in dictionary."""
+    user_word = request.args.get("word", "")
     board = session["board"]
     res = boggle_game.check_valid_word(board, user_word)
     return jsonify({"result": res})
+
+
+@app.route("/savescore", methods=["POST"])
+def get_score():
+    """Save score and number of plays. See if current score is better than previous high score"""
+    score = request.json.get("score", 0)
+    highscore = session.get("highscore", 0)
+    games_played = session.get("games_played", 0)
+    session["highscore"] = max(score, highscore)
+    session["games_played"] = games_played + 1
+    return jsonify(bestscore=score > highscore)
