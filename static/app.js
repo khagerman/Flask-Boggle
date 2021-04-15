@@ -76,10 +76,17 @@ class BoggleGame {
     if (res.data.bestscore) {
       this.alertUser(
         "alert-success",
-        `Yah! Congrats new top score of ${this.score} points !!!!`
+        `Yah! 🎉 Congrats new top score of ${this.score} points !!!!`
       );
     } else {
-      this.alertUser("alert-info", `Nice Job, you scored ${this.score} points`);
+      if (this.score !== 0) {
+        this.alertUser(
+          "alert-info",
+          `Nice Job, you scored ${this.score} points! 😊`
+        );
+      } else {
+        this.alertUser("alert-danger", `Oops, let's try that again!`);
+      }
     }
     $("#restart").show();
   }
