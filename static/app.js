@@ -11,7 +11,6 @@ class BoggleGame {
     e.preventDefault();
     if (this.words.length === 0) {
       this.timer();
-      this.alertUser("alert-info", "djhsh");
     }
     const word = $("#submitword input").val().toLowerCase();
     console.log(word);
@@ -35,7 +34,7 @@ class BoggleGame {
       this.alertUser("alert-warning", "That is a word, but it's not on board!");
       this.hide();
     } else {
-      alertUser("alert-danger", "That's not a word  in our dictionary :(");
+      alertUser("alert-danger", "That's not a word in our dictionary :(");
       this.hide();
     }
     $("#submitword input").val("");
@@ -47,7 +46,7 @@ class BoggleGame {
   }
 
   hide() {
-    setTimeout(function () {
+    setTimeout(() => {
       $("#notify").hide();
       $("#notify").removeClass("alert alert-danger");
       $("#notify").removeClass("alert alert-warning");
