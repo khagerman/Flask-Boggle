@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://unpkg.com/jquery"></script>
+
     <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/static/app.css">
-    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+
 
     <title>Play Boggle!</title>
 </head>
 
 <body>
     <h1>Boggle!</h1>
-    <div class="row border border-info m-4">
+    <div class="board row border border-info m-4">
         <div class="col">Timer: <span id="timer">60</span></div>
         <div class="col">Points: <span id="points">0</span></div>
         <div class="col">Best Score: {{ session["highscore"] }}</div>
@@ -43,9 +43,14 @@
     <br>
     <div id="notify" class="container hidden"></div>
     <div class="text-center">
-        <button id="restart" class=" btn btn-info hidden">Restart Game</button>
+        <button id="restart" href="/" class=" btn btn-info hidden">Restart Game</button>
     </div>
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
     <script src="/static/app.js"></script>
+    <script>
+        let game = new BoggleGame();
+    </script>
 </body>
 
 </html>
