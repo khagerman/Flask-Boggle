@@ -15,7 +15,7 @@
 
 <body>
     <h1>Boggle!</h1>
-    <div class="board row border border-info m-4">
+    <div class="row border border-info m-4">
         <div class="col">Timer: <span id="timer">60</span></div>
         <div class="col">Points: <span id="points">0</span></div>
         <div class="col">Best Score: {{ session["highscore"] }}</div>
@@ -43,7 +43,7 @@
     <br>
     <div id="notify" class="container hidden"></div>
     <div class="text-center">
-        <button id="restart" href="/" class=" btn btn-info hidden">Restart Game</button>
+        <a id="restart" href="/" role="button" class=" btn btn-info hidden">Restart Game</a>
     </div>
     <script src="http://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>

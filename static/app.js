@@ -3,8 +3,8 @@ class BoggleGame {
     this.score = 0;
     this.count = count;
     this.words = [];
-    this.board = $(".board");
-    $("#submitword", this.board).on("submit", this.checkUserWord.bind(this));
+
+    $("#submitword").on("submit", this.checkUserWord.bind(this));
     this.counter = setInterval(this.timer.bind(this), 1000);
   }
   async checkUserWord(e) {
@@ -18,7 +18,8 @@ class BoggleGame {
       return;
     }
     if (this.words.includes(word)) {
-      alertUser("alert-info", "Oops, you already found that!");
+      this.alertUser("alert-info", "Oops, you already found that!");
+      $("#submitword input").val("");
       this.hide();
       return;
     }
@@ -34,7 +35,7 @@ class BoggleGame {
       this.alertUser("alert-warning", "That is a word, but it's not on board!");
       this.hide();
     } else {
-      alertUser("alert-danger", "That's not a word in our dictionary :(");
+      this.alertUser("alert-danger", "That's not a word in our dictionary 😕");
       this.hide();
     }
     $("#submitword input").val("");
@@ -71,14 +72,14 @@ class BoggleGame {
   }
 
   async finishGame() {
-    const res = await axios.post("/savescore", { score: score });
+    const res = await axios.post("/savescore", { score: this.score });
     if (res.data.bestscore) {
       this.alertUser(
         "alert-success",
-        `Yah! Congrats new top score of ${score} points !!!!`
+        `Yah! Congrats new top score of ${this.score} points !!!!`
       );
     } else {
-      this.alertUser("alert-info", `Nice Job, you scored ${score} points`);
+      this.alertUser("alert-info", `Nice Job, you scored ${this.score} points`);
     }
     $("#restart").show();
   }
